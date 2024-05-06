@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0h0877u51ues"]
+
+[ext_resource type="PackedScene" uid="uid://4bko5vb76hbq" path="res://scenes/player.tscn" id="1_lggr6"]
+[ext_resource type="Script" path="res://scripts/Control.gd" id="2_8tfna"]
+
+[node name="World" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_lggr6")]
+position = Vector2(487, 274)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_8tfna")
+
+[node name="adicionarVida" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = -30.0
+offset_top = 86.0
+offset_right = 87.0
+offset_bottom = 201.0
+text = "Aumentar Vida"
+
+[node name="diminuirVida" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = -29.0
+offset_top = 219.0
+offset_right = 98.0
+offset_bottom = 333.0
+text = "Diminuir vida"
+
+[connection signal="mudar_vida" from="Control" to="Player" method="_on_control_mudar_vida"]
+[connection signal="pressed" from="Control/adicionarVida" to="Control" method="_on_adicionar_vida_pressed"]
+[connection signal="pressed" from="Control/diminuirVida" to="Control" method="_on_diminuir_vida_pressed"]

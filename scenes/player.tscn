@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://4bko5vb76hbq"]
+
+[ext_resource type="Texture2D" uid="uid://dubw6jv8l5inq" path="res://assets/icon.svg" id="1_5s2e1"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_kpk1w"]
+[ext_resource type="Script" path="res://scripts/PlayerText.gd" id="3_n42ay"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwsua"]
+size = Vector2(128.25, 126.5)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_kpk1w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5s2e1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_lwsua")
+
+[node name="Text" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -0.125
+offset_top = -0.75
+offset_right = 39.875
+offset_bottom = 39.25
+script = ExtResource("3_n42ay")
+
+[node name="PosicaoAtual" type="RichTextLabel" parent="Text"]
+offset_left = -63.875
+offset_top = -94.25
+offset_right = 338.125
+offset_bottom = -54.25
+text = "Posição Atual:  X"
+
+[node name="VidaAtual" type="RichTextLabel" parent="Text"]
+layout_mode = 0
+offset_left = -63.0
+offset_top = -132.0
+offset_right = 316.0
+offset_bottom = -106.0
+text = "Vida atual: X"
+
+[connection signal="atualizar_ui" from="." to="Text" method="_on_player_atualizar_ui"]
