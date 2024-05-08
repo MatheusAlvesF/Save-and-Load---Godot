@@ -27,6 +27,7 @@ offset_bottom = 39.25
 script = ExtResource("3_n42ay")
 
 [node name="PosicaoAtual" type="RichTextLabel" parent="Text"]
+layout_mode = 0
 offset_left = -63.875
 offset_top = -94.25
 offset_right = 338.125
